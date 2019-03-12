@@ -1,0 +1,29 @@
+{% extends "./layout.html" %}
+
+{% block title %}API LIST{% endblock %}
+
+{% block breadcrumb_nav %}
+    <li><a href="{{ url_for('api.index') }}">API LIST</a></li>
+{% endblock %}
+
+{% block page_header %}
+    <h1>API LIST</h1>
+{% endblock %}
+
+{% block content_area %}
+
+    <table class="table-condensed">
+        <tr>
+            <td>接口名称</td>
+            <td>接口描述</td>
+            <td>接口地址</td>
+        </tr>
+        {% for i in api_map %}
+        <tr>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[1] }}</td>
+            <td><a href="/docs/api.{{ i[2] }}">{{ i[0] }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
